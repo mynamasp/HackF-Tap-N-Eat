@@ -1,10 +1,13 @@
+import '../auth/auth_util.dart';
+import '../backend/backend.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../home_page/home_page_widget.dart';
 import '../login/login_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:provider/provider.dart';
 
 class CreateanaccountWidget extends StatefulWidget {
   const CreateanaccountWidget({Key? key}) : super(key: key);
@@ -14,35 +17,43 @@ class CreateanaccountWidget extends StatefulWidget {
 }
 
 class _CreateanaccountWidgetState extends State<CreateanaccountWidget> {
-  TextEditingController? textController1;
-  TextEditingController? textController2;
-  TextEditingController? textController3;
-  TextEditingController? textController4;
-  final textFieldMask4 = MaskTextInputFormatter(mask: '*');
+  TextEditingController? confirmPasswordFieldController;
+  late bool confirmPasswordFieldVisibility;
+  TextEditingController? emailFieldController;
+  TextEditingController? nameFieldController;
+  TextEditingController? phoneFieldController;
+  TextEditingController? passwordFieldController;
+  late bool passwordFieldVisibility;
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    textController1 = TextEditingController();
-    textController2 = TextEditingController();
-    textController3 = TextEditingController();
-    textController4 = TextEditingController();
+    confirmPasswordFieldController = TextEditingController();
+    confirmPasswordFieldVisibility = false;
+    emailFieldController = TextEditingController();
+    nameFieldController = TextEditingController();
+    phoneFieldController = TextEditingController();
+    passwordFieldController = TextEditingController();
+    passwordFieldVisibility = false;
   }
 
   @override
   void dispose() {
     _unfocusNode.dispose();
-    textController1?.dispose();
-    textController2?.dispose();
-    textController3?.dispose();
-    textController4?.dispose();
+    confirmPasswordFieldController?.dispose();
+    emailFieldController?.dispose();
+    nameFieldController?.dispose();
+    phoneFieldController?.dispose();
+    passwordFieldController?.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -103,7 +114,7 @@ class _CreateanaccountWidgetState extends State<CreateanaccountWidget> {
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.8,
                         child: TextFormField(
-                          controller: textController1,
+                          controller: emailFieldController,
                           autofocus: true,
                           obscureText: false,
                           decoration: InputDecoration(
@@ -148,7 +159,7 @@ class _CreateanaccountWidgetState extends State<CreateanaccountWidget> {
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.8,
                     child: TextFormField(
-                      controller: textController2,
+                      controller: nameFieldController,
                       autofocus: true,
                       obscureText: false,
                       decoration: InputDecoration(
@@ -190,7 +201,7 @@ class _CreateanaccountWidgetState extends State<CreateanaccountWidget> {
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.8,
                     child: TextFormField(
-                      controller: textController3,
+                      controller: phoneFieldController,
                       autofocus: true,
                       obscureText: false,
                       decoration: InputDecoration(
@@ -211,9 +222,9 @@ class _CreateanaccountWidgetState extends State<CreateanaccountWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.04, -0.03),
+                alignment: AlignmentDirectional(0.57, 0.17),
                 child: Container(
-                  width: 346.1,
+                  width: 346,
                   height: 60,
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -226,38 +237,109 @@ class _CreateanaccountWidgetState extends State<CreateanaccountWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(-0.32, -0.02),
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(40, 0, 20, 0),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    child: TextFormField(
-                      controller: textController4,
-                      autofocus: true,
-                      obscureText: false,
-                      decoration: InputDecoration(
-                        labelText: 'Password',
-                        hintText: 'Enter your Password',
-                        hintStyle: FlutterFlowTheme.of(context).bodyText2,
-                        enabledBorder: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                        errorBorder: InputBorder.none,
-                        focusedErrorBorder: InputBorder.none,
-                      ),
-                      style: FlutterFlowTheme.of(context).subtitle1.override(
-                            fontFamily: 'Poppins',
-                            lineHeight: 2,
-                          ),
-                      inputFormatters: [textFieldMask4],
+                alignment: AlignmentDirectional(0.04, -0.03),
+                child: Container(
+                  width: 346,
+                  height: 60,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(
+                      color: Color(0xFF5174F0),
+                      width: 2,
                     ),
+                  ),
+                  child: Stack(
+                    children: [
+                      Align(
+                        alignment: AlignmentDirectional(-0.79, -0.47),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(40, 0, 20, 0),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * 0.8,
+                            child: TextFormField(
+                              controller: passwordFieldController,
+                              autofocus: true,
+                              obscureText: !passwordFieldVisibility,
+                              decoration: InputDecoration(
+                                labelText: 'Password',
+                                hintText: 'Enter your Password',
+                                hintStyle:
+                                    FlutterFlowTheme.of(context).bodyText2,
+                                enabledBorder: InputBorder.none,
+                                focusedBorder: InputBorder.none,
+                                errorBorder: InputBorder.none,
+                                focusedErrorBorder: InputBorder.none,
+                                suffixIcon: InkWell(
+                                  onTap: () => setState(
+                                    () => passwordFieldVisibility =
+                                        !passwordFieldVisibility,
+                                  ),
+                                  focusNode: FocusNode(skipTraversal: true),
+                                  child: Icon(
+                                    passwordFieldVisibility
+                                        ? Icons.visibility_outlined
+                                        : Icons.visibility_off_outlined,
+                                    color: Color(0xFF757575),
+                                    size: 22,
+                                  ),
+                                ),
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .subtitle1
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    lineHeight: 2,
+                                  ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
               Align(
                 alignment: AlignmentDirectional(-0.31, 0.33),
                 child: FFButtonWidget(
-                  onPressed: () {
-                    print('Button pressed ...');
+                  onPressed: () async {
+                    if (passwordFieldController?.text !=
+                        confirmPasswordFieldController?.text) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            'Passwords don\'t match!',
+                          ),
+                        ),
+                      );
+                      return;
+                    }
+
+                    final user = await createAccountWithEmail(
+                      context,
+                      emailFieldController!.text,
+                      passwordFieldController!.text,
+                    );
+                    if (user == null) {
+                      return;
+                    }
+
+                    final usersCreateData = createUsersRecordData(
+                      phoneNumber: phoneFieldController!.text,
+                    );
+                    await UsersRecord.collection
+                        .doc(user.uid)
+                        .update(usersCreateData);
+
+                    await Navigator.push(
+                      context,
+                      PageTransition(
+                        type: PageTransitionType.fade,
+                        duration: Duration(milliseconds: 500),
+                        reverseDuration: Duration(milliseconds: 500),
+                        child: HomePageWidget(),
+                      ),
+                    );
                   },
                   text: 'Create Account',
                   options: FFButtonOptions(
@@ -301,6 +383,47 @@ class _CreateanaccountWidgetState extends State<CreateanaccountWidget> {
                       width: 2,
                     ),
                     borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+              ),
+              Align(
+                alignment: AlignmentDirectional(0.45, 0.18),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(40, 0, 20, 0),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.8,
+                    child: TextFormField(
+                      controller: confirmPasswordFieldController,
+                      autofocus: true,
+                      obscureText: !confirmPasswordFieldVisibility,
+                      decoration: InputDecoration(
+                        labelText: 'Password',
+                        hintText: 'Enter your Password',
+                        hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                        enabledBorder: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        errorBorder: InputBorder.none,
+                        focusedErrorBorder: InputBorder.none,
+                        suffixIcon: InkWell(
+                          onTap: () => setState(
+                            () => confirmPasswordFieldVisibility =
+                                !confirmPasswordFieldVisibility,
+                          ),
+                          focusNode: FocusNode(skipTraversal: true),
+                          child: Icon(
+                            confirmPasswordFieldVisibility
+                                ? Icons.visibility_outlined
+                                : Icons.visibility_off_outlined,
+                            color: Color(0xFF757575),
+                            size: 22,
+                          ),
+                        ),
+                      ),
+                      style: FlutterFlowTheme.of(context).subtitle1.override(
+                            fontFamily: 'Poppins',
+                            lineHeight: 2,
+                          ),
+                    ),
                   ),
                 ),
               ),

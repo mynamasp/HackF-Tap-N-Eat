@@ -12,3 +12,4 @@ export 'notifications/notifications_widget.dart' show NotificationsWidget;
 export 'home_page/home_page_widget.dart' show HomePageWidget;
 export 'food_menu/food_menu_widget.dart' show FoodMenuWidget;
 export 'item_detail/item_detail_widget.dart' show ItemDetailWidget;
+export 'cart_page/cart_page_widget.dart' show CartPageWidget;

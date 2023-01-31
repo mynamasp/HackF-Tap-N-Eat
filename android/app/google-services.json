@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "756522716813",
+    "project_id": "tapneat-1969b",
+    "storage_bucket": "tapneat-1969b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:756522716813:android:9b70dc47632d05fc885cc4",
+        "android_client_info": {
+          "package_name": "com.mycompany.tapneat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "756522716813-fpob2e59t21vso0jkj1os8kuh92m7kpp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.tapneat",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "756522716813-7ifjaj65toaseoblopefcdkn62atnd5g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDo8bX5RojreM6R5s9aALLp3bAiNcMnC-o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "756522716813-7ifjaj65toaseoblopefcdkn62atnd5g.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "756522716813-71ps3vc4nbdcfo07krb5di4opecptfdv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mycompany.tapneat"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,7 +1,10 @@
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../login/login_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class LandingPageWidget extends StatefulWidget {
   const LandingPageWidget({Key? key}) : super(key: key);
@@ -15,6 +18,21 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
+  void initState() {
+    super.initState();
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await Future.delayed(const Duration(milliseconds: 1000));
+      await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => LoginWidget(),
+        ),
+      );
+    });
+  }
+
+  @override
   void dispose() {
     _unfocusNode.dispose();
     super.dispose();
@@ -22,6 +40,8 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: Color(0xFFF5F5F5),

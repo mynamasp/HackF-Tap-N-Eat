@@ -1,8 +1,12 @@
+import '../auth/auth_util.dart';
+import '../createanaccount/createanaccount_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../food_menu/food_menu_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class LoginviaemailWidget extends StatefulWidget {
   const LoginviaemailWidget({Key? key}) : super(key: key);
@@ -12,28 +16,32 @@ class LoginviaemailWidget extends StatefulWidget {
 }
 
 class _LoginviaemailWidgetState extends State<LoginviaemailWidget> {
-  TextEditingController? textController1;
-  TextEditingController? textController2;
+  TextEditingController? emailFieldController;
+  TextEditingController? passwordFieldController;
+  late bool passwordFieldVisibility;
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    textController1 = TextEditingController();
-    textController2 = TextEditingController();
+    emailFieldController = TextEditingController();
+    passwordFieldController = TextEditingController();
+    passwordFieldVisibility = false;
   }
 
   @override
   void dispose() {
     _unfocusNode.dispose();
-    textController1?.dispose();
-    textController2?.dispose();
+    emailFieldController?.dispose();
+    passwordFieldController?.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -111,7 +119,7 @@ class _LoginviaemailWidgetState extends State<LoginviaemailWidget> {
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.8,
                     child: TextFormField(
-                      controller: textController1,
+                      controller: emailFieldController,
                       autofocus: true,
                       obscureText: false,
                       decoration: InputDecoration(
@@ -138,9 +146,9 @@ class _LoginviaemailWidgetState extends State<LoginviaemailWidget> {
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.8,
                     child: TextFormField(
-                      controller: textController2,
+                      controller: passwordFieldController,
                       autofocus: true,
-                      obscureText: false,
+                      obscureText: !passwordFieldVisibility,
                       decoration: InputDecoration(
                         labelText: 'Password',
                         hintText: 'Enter your Password',
@@ -149,6 +157,20 @@ class _LoginviaemailWidgetState extends State<LoginviaemailWidget> {
                         focusedBorder: InputBorder.none,
                         errorBorder: InputBorder.none,
                         focusedErrorBorder: InputBorder.none,
+                        suffixIcon: InkWell(
+                          onTap: () => setState(
+                            () => passwordFieldVisibility =
+                                !passwordFieldVisibility,
+                          ),
+                          focusNode: FocusNode(skipTraversal: true),
+                          child: Icon(
+                            passwordFieldVisibility
+                                ? Icons.visibility_outlined
+                                : Icons.visibility_off_outlined,
+                            color: Color(0xFF757575),
+                            size: 22,
+                          ),
+                        ),
                       ),
                       style: FlutterFlowTheme.of(context).subtitle1.override(
                             fontFamily: 'Poppins',
@@ -168,8 +190,25 @@ class _LoginviaemailWidgetState extends State<LoginviaemailWidget> {
               Align(
                 alignment: AlignmentDirectional(-0.29, -0.22),
                 child: FFButtonWidget(
-                  onPressed: () {
-                    print('Button pressed ...');
+                  onPressed: () async {
+                    final user = await signInWithEmail(
+                      context,
+                      emailFieldController!.text,
+                      passwordFieldController!.text,
+                    );
+                    if (user == null) {
+                      return;
+                    }
+
+                    await Navigator.push(
+                      context,
+                      PageTransition(
+                        type: PageTransitionType.bottomToTop,
+                        duration: Duration(milliseconds: 500),
+                        reverseDuration: Duration(milliseconds: 500),
+                        child: FoodMenuWidget(),
+                      ),
+                    );
                   },
                   text: 'Login',
                   options: FFButtonOptions(
@@ -191,8 +230,13 @@ class _LoginviaemailWidgetState extends State<LoginviaemailWidget> {
               Align(
                 alignment: AlignmentDirectional(-0.21, -0.07),
                 child: FFButtonWidget(
-                  onPressed: () {
-                    print('Button pressed ...');
+                  onPressed: () async {
+                    await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CreateanaccountWidget(),
+                      ),
+                    );
                   },
                   text: 'Create an Account Instead',
                   options: FFButtonOptions(

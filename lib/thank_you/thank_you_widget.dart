@@ -3,6 +3,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class ThankYouWidget extends StatefulWidget {
   const ThankYouWidget({Key? key}) : super(key: key);
@@ -23,6 +24,8 @@ class _ThankYouWidgetState extends State<ThankYouWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -61,7 +64,7 @@ class _ThankYouWidgetState extends State<ThankYouWidget> {
                 Align(
                   alignment: AlignmentDirectional(-0.05, -0.2),
                   child: Text(
-                    'We’ll get to you as soon as possible',
+                    'Your order status',
                     style: FlutterFlowTheme.of(context).bodyText1,
                   ),
                 ),
@@ -75,7 +78,7 @@ class _ThankYouWidgetState extends State<ThankYouWidget> {
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(-0.27, 0.63),
+                  alignment: AlignmentDirectional(0, 0.62),
                   child: FFButtonWidget(
                     onPressed: () {
                       print('Button pressed ...');

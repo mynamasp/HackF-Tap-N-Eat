@@ -1,13 +1,22 @@
+import '../backend/backend.dart';
+import '../cart_page/cart_page_widget.dart';
 import '../flutter_flow/flutter_flow_count_controller.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 class ItemDetailWidget extends StatefulWidget {
-  const ItemDetailWidget({Key? key}) : super(key: key);
+  const ItemDetailWidget({
+    Key? key,
+    this.itemRef,
+  }) : super(key: key);
+
+  final MenuItemsRecord? itemRef;
 
   @override
   _ItemDetailWidgetState createState() => _ItemDetailWidgetState();
@@ -26,6 +35,8 @@ class _ItemDetailWidgetState extends State<ItemDetailWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -68,7 +79,7 @@ class _ItemDetailWidgetState extends State<ItemDetailWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(-0.09, -0.47),
+                alignment: AlignmentDirectional(0, -0.15),
                 child: Text(
                   'Quantity',
                   style: FlutterFlowTheme.of(context).bodyText1.override(
@@ -86,9 +97,9 @@ class _ItemDetailWidgetState extends State<ItemDetailWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(-0.07, -0.08),
+                alignment: AlignmentDirectional(-0.9, -0.46),
                 child: Text(
-                  'Instruction',
+                  widget.itemRef!.name!,
                   style: FlutterFlowTheme.of(context).bodyText1.override(
                         fontFamily: 'Poppins',
                         fontSize: 22,
@@ -96,24 +107,14 @@ class _ItemDetailWidgetState extends State<ItemDetailWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(-0.02, 0.11),
-                child: Text(
-                  'Lorem Ipsum..........',
+                alignment: AlignmentDirectional(-0.9, -0.37),
+                child: AutoSizeText(
+                  widget.itemRef!.description!,
                   style: FlutterFlowTheme.of(context).bodyText1,
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(-0.14, 0.29),
-                child: Text(
-                  'If the product is no available ',
-                  style: FlutterFlowTheme.of(context).bodyText1.override(
-                        fontFamily: 'Poppins',
-                        fontSize: 22,
-                      ),
-                ),
-              ),
-              Align(
-                alignment: AlignmentDirectional(-0.08, -0.35),
+                alignment: AlignmentDirectional(0, -0.02),
                 child: Container(
                   width: 160,
                   height: 50,
@@ -146,7 +147,7 @@ class _ItemDetailWidgetState extends State<ItemDetailWidget> {
                         fontSize: 16,
                       ),
                     ),
-                    count: countControllerValue ??= 0,
+                    count: countControllerValue ??= 1,
                     updateCount: (count) =>
                         setState(() => countControllerValue = count),
                     stepSize: 1,
@@ -156,20 +157,25 @@ class _ItemDetailWidgetState extends State<ItemDetailWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(-0.69, 0.79),
-                child: Text(
-                  'Price',
-                  style: FlutterFlowTheme.of(context).bodyText1.override(
-                        fontFamily: 'Poppins',
-                        fontSize: 30,
-                      ),
-                ),
-              ),
-              Align(
-                alignment: AlignmentDirectional(0.8, 0.79),
+                alignment: AlignmentDirectional(0.8, 0.75),
                 child: FFButtonWidget(
-                  onPressed: () {
-                    print('Button pressed ...');
+                  onPressed: () async {
+                    FFAppState().update(() {
+                      FFAppState().addToCart(widget.itemRef!.reference);
+                    });
+                    FFAppState().update(() {
+                      FFAppState().Total =
+                          FFAppState().Total + widget.itemRef!.price!;
+                    });
+                    await Navigator.push(
+                      context,
+                      PageTransition(
+                        type: PageTransitionType.bottomToTop,
+                        duration: Duration(milliseconds: 500),
+                        reverseDuration: Duration(milliseconds: 500),
+                        child: CartPageWidget(),
+                      ),
+                    );
                   },
                   text: 'Add To Cart',
                   options: FFButtonOptions(
@@ -186,6 +192,23 @@ class _ItemDetailWidgetState extends State<ItemDetailWidget> {
                     ),
                     borderRadius: BorderRadius.circular(8),
                   ),
+                ),
+              ),
+              Align(
+                alignment: AlignmentDirectional(-0.8, 0.75),
+                child: Text(
+                  formatNumber(
+                    widget.itemRef!.price!,
+                    formatType: FormatType.custom,
+                    currency: 'Rs. ',
+                    format: '',
+                    locale: '',
+                  ),
+                  textAlign: TextAlign.start,
+                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                        fontFamily: 'Poppins',
+                        fontSize: 30,
+                      ),
                 ),
               ),
             ],
