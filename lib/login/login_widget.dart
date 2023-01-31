@@ -1,8 +1,8 @@
+import '../createanaccount/createanaccount_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginWidget extends StatefulWidget {
@@ -30,8 +30,7 @@ class _LoginWidgetState extends State<LoginWidget> {
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
+          child: Stack(
             children: [
               Align(
                 alignment: AlignmentDirectional(0, -0.99),
@@ -40,24 +39,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                   width: 400,
                   height: 300,
                   fit: BoxFit.cover,
-                ),
-              ),
-              Stack(
-                children: [],
-              ),
-              Align(
-                alignment: AlignmentDirectional(0, 0),
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [],
-                ),
-              ),
-              Align(
-                alignment: AlignmentDirectional(-0.46, -0.01),
-                child: FaIcon(
-                  FontAwesomeIcons.google,
-                  color: FlutterFlowTheme.of(context).primaryBackground,
-                  size: 20,
                 ),
               ),
               Align(
@@ -84,14 +65,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(-0.5, 0.17),
-                child: FaIcon(
-                  FontAwesomeIcons.facebookF,
-                  color: Colors.white,
-                  size: 24,
-                ),
-              ),
-              Align(
                 alignment: AlignmentDirectional(0.15, 0.18),
                 child: FFButtonWidget(
                   onPressed: () {
@@ -115,7 +88,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.11, 0.37),
+                alignment: AlignmentDirectional(0.15, 0.35),
                 child: FFButtonWidget(
                   onPressed: () {
                     print('Button pressed ...');
@@ -123,7 +96,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                   text: 'Login Via Apple',
                   options: FFButtonOptions(
                     width: 330,
-                    height: 60,
+                    height: 50,
                     color: Colors.black,
                     textStyle: FlutterFlowTheme.of(context).subtitle2.override(
                           fontFamily: 'Poppins',
@@ -134,6 +107,67 @@ class _LoginWidgetState extends State<LoginWidget> {
                       width: 1,
                     ),
                     borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+              ),
+              Align(
+                alignment: AlignmentDirectional(-0.01, 0.51),
+                child: FFButtonWidget(
+                  onPressed: () {
+                    print('Button pressed ...');
+                  },
+                  text: 'Login Via Email',
+                  options: FFButtonOptions(
+                    width: 330,
+                    height: 50,
+                    color: Color(0xFF1173E5),
+                    textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                          fontFamily: 'Poppins',
+                          color: Colors.white,
+                        ),
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+              ),
+              Align(
+                alignment: AlignmentDirectional(0.06, 0.68),
+                child: FFButtonWidget(
+                  onPressed: () async {
+                    await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CreateanaccountWidget(),
+                      ),
+                    );
+                  },
+                  text: 'Create an Account',
+                  options: FFButtonOptions(
+                    width: 330,
+                    height: 50,
+                    color: Colors.white,
+                    textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                          fontFamily: 'Poppins',
+                          color: Color(0xFFBCBEC0),
+                        ),
+                    borderSide: BorderSide(
+                      color: Colors.transparent,
+                      width: 1,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+              ),
+              Align(
+                alignment: AlignmentDirectional(0, 0.86),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(20, 0, 40, 0),
+                  child: Text(
+                    'By signing up, you are agreeing to our Terms & Conditions',
+                    style: FlutterFlowTheme.of(context).bodyText2,
                   ),
                 ),
               ),

@@ -33,7 +33,7 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
               Image.asset(
                 'assets/images/splash_bg.png',
                 width: 400,
-                height: 914.1,
+                height: 914,
                 fit: BoxFit.cover,
               ),
               Align(
