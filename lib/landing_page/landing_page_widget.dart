@@ -52,8 +52,8 @@ class _LandingPageWidgetState extends State<LandingPageWidget> {
             children: [
               Image.asset(
                 'assets/images/splash_bg.png',
-                width: 400,
-                height: 914,
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * 1,
                 fit: BoxFit.cover,
               ),
               Align(

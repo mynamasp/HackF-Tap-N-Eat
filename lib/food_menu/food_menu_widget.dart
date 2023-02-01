@@ -36,14 +36,26 @@ class _FoodMenuWidgetState extends State<FoodMenuWidget> {
           onTap: () => FocusScope.of(context).requestFocus(_unfocusNode),
           child: Stack(
             children: [
-              Align(
-                alignment: AlignmentDirectional(0, -1),
-                child: Image.asset(
-                  'assets/images/idli.jpg',
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height * 0.22,
-                  fit: BoxFit.cover,
-                ),
+              Stack(
+                children: [
+                  Align(
+                    alignment: AlignmentDirectional(0, -1.18),
+                    child: Image.asset(
+                      'assets/images/idli.jpg',
+                      width: MediaQuery.of(context).size.width * 1.2,
+                      height: 250,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Align(
+                    alignment: AlignmentDirectional(-0.9, -0.95),
+                    child: Icon(
+                      Icons.arrow_back,
+                      color: FlutterFlowTheme.of(context).primaryBtnText,
+                      size: 30,
+                    ),
+                  ),
+                ],
               ),
               Align(
                 alignment: AlignmentDirectional(-0.84, -0.45),
@@ -56,7 +68,7 @@ class _FoodMenuWidgetState extends State<FoodMenuWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0, 0.1),
+                alignment: AlignmentDirectional(0, 1),
                 child: StreamBuilder<List<MenuItemsRecord>>(
                   stream: queryMenuItemsRecord(
                     queryBuilder: (menuItemsRecord) =>

@@ -16,11 +16,11 @@ abstract class OrdersRecord
   @BuiltValueField(wireName: 'Item')
   String? get item;
 
-  @BuiltValueField(wireName: 'Price')
-  int? get price;
-
   @BuiltValueField(wireName: 'Status')
   String? get status;
+
+  @BuiltValueField(wireName: 'Price')
+  double? get price;
 
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
@@ -29,8 +29,8 @@ abstract class OrdersRecord
   static void _initializeBuilder(OrdersRecordBuilder builder) => builder
     ..user = ''
     ..item = ''
-    ..price = 0
-    ..status = '';
+    ..status = ''
+    ..price = 0.0;
 
   static CollectionReference get collection =>
       FirebaseFirestore.instance.collection('orders');
@@ -56,8 +56,8 @@ abstract class OrdersRecord
 Map<String, dynamic> createOrdersRecordData({
   String? user,
   String? item,
-  int? price,
   String? status,
+  double? price,
 }) {
   final firestoreData = serializers.toFirestore(
     OrdersRecord.serializer,
@@ -65,8 +65,8 @@ Map<String, dynamic> createOrdersRecordData({
       (o) => o
         ..user = user
         ..item = item
-        ..price = price
-        ..status = status,
+        ..status = status
+        ..price = price,
     ),
   );
 

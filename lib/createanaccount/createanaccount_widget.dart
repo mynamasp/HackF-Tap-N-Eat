@@ -74,10 +74,15 @@ class _CreateanaccountWidgetState extends State<CreateanaccountWidget> {
               ),
               Align(
                 alignment: AlignmentDirectional(-0.9, -0.95),
-                child: Icon(
-                  Icons.arrow_back,
-                  color: Colors.black,
-                  size: 24,
+                child: InkWell(
+                  onTap: () async {
+                    Navigator.pop(context);
+                  },
+                  child: Icon(
+                    Icons.arrow_back,
+                    color: Colors.black,
+                    size: 24,
+                  ),
                 ),
               ),
               Align(
@@ -89,13 +94,16 @@ class _CreateanaccountWidgetState extends State<CreateanaccountWidget> {
               ),
               Align(
                 alignment: AlignmentDirectional(-0.67, -0.95),
-                child: Text(
-                  'Create and Account',
-                  style: FlutterFlowTheme.of(context).bodyText1,
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                  child: Text(
+                    'Create an Account',
+                    style: FlutterFlowTheme.of(context).bodyText1,
+                  ),
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.04, -0.45),
+                alignment: AlignmentDirectional(0, -0.45),
                 child: Container(
                   width: 346.1,
                   height: 60,
@@ -108,9 +116,9 @@ class _CreateanaccountWidgetState extends State<CreateanaccountWidget> {
                     ),
                   ),
                   child: Align(
-                    alignment: AlignmentDirectional(-2.24, -0.45),
+                    alignment: AlignmentDirectional(0, -0.45),
                     child: Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(30, 0, 20, 0),
+                      padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.8,
                         child: TextFormField(
@@ -138,7 +146,7 @@ class _CreateanaccountWidgetState extends State<CreateanaccountWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.23, -0.63),
+                alignment: AlignmentDirectional(0, -0.63),
                 child: Container(
                   width: 346.1,
                   height: 60,
@@ -150,37 +158,38 @@ class _CreateanaccountWidgetState extends State<CreateanaccountWidget> {
                       width: 2,
                     ),
                   ),
-                ),
-              ),
-              Align(
-                alignment: AlignmentDirectional(-2.24, -0.63),
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(50, 0, 20, 0),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    child: TextFormField(
-                      controller: nameFieldController,
-                      autofocus: true,
-                      obscureText: false,
-                      decoration: InputDecoration(
-                        labelText: 'Name',
-                        hintText: 'Enter your Name',
-                        hintStyle: FlutterFlowTheme.of(context).bodyText2,
-                        enabledBorder: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                        errorBorder: InputBorder.none,
-                        focusedErrorBorder: InputBorder.none,
-                      ),
-                      style: FlutterFlowTheme.of(context).subtitle1.override(
-                            fontFamily: 'Poppins',
-                            lineHeight: 2,
+                  child: Align(
+                    alignment: AlignmentDirectional(0, -0.63),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.8,
+                        child: TextFormField(
+                          controller: nameFieldController,
+                          autofocus: true,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            labelText: 'Name',
+                            hintText: 'Enter your Name',
+                            hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                            enabledBorder: InputBorder.none,
+                            focusedBorder: InputBorder.none,
+                            errorBorder: InputBorder.none,
+                            focusedErrorBorder: InputBorder.none,
                           ),
+                          style:
+                              FlutterFlowTheme.of(context).subtitle1.override(
+                                    fontFamily: 'Poppins',
+                                    lineHeight: 2,
+                                  ),
+                        ),
+                      ),
                     ),
                   ),
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(-0.01, -0.24),
+                alignment: AlignmentDirectional(0, -0.24),
                 child: Container(
                   width: 346.1,
                   height: 60,
@@ -192,37 +201,38 @@ class _CreateanaccountWidgetState extends State<CreateanaccountWidget> {
                       width: 2,
                     ),
                   ),
-                ),
-              ),
-              Align(
-                alignment: AlignmentDirectional(-2.5, -0.24),
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(50, 0, 20, 0),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    child: TextFormField(
-                      controller: phoneFieldController,
-                      autofocus: true,
-                      obscureText: false,
-                      decoration: InputDecoration(
-                        labelText: 'Phone No.',
-                        hintText: 'Enter your Number',
-                        hintStyle: FlutterFlowTheme.of(context).bodyText2,
-                        enabledBorder: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                        errorBorder: InputBorder.none,
-                        focusedErrorBorder: InputBorder.none,
-                      ),
-                      style: FlutterFlowTheme.of(context).subtitle1.override(
-                            fontFamily: 'Poppins',
-                            lineHeight: 2,
+                  child: Align(
+                    alignment: AlignmentDirectional(0, -0.24),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.8,
+                        child: TextFormField(
+                          controller: phoneFieldController,
+                          autofocus: true,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            labelText: 'Phone No.',
+                            hintText: 'Enter your Number',
+                            hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                            enabledBorder: InputBorder.none,
+                            focusedBorder: InputBorder.none,
+                            errorBorder: InputBorder.none,
+                            focusedErrorBorder: InputBorder.none,
                           ),
+                          style:
+                              FlutterFlowTheme.of(context).subtitle1.override(
+                                    fontFamily: 'Poppins',
+                                    lineHeight: 2,
+                                  ),
+                        ),
+                      ),
                     ),
                   ),
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.57, 0.17),
+                alignment: AlignmentDirectional(0, 0.17),
                 child: Container(
                   width: 346,
                   height: 60,
@@ -234,10 +244,52 @@ class _CreateanaccountWidgetState extends State<CreateanaccountWidget> {
                       width: 2,
                     ),
                   ),
+                  child: Align(
+                    alignment: AlignmentDirectional(0, 0.18),
+                    child: Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.8,
+                        child: TextFormField(
+                          controller: confirmPasswordFieldController,
+                          autofocus: true,
+                          obscureText: !confirmPasswordFieldVisibility,
+                          decoration: InputDecoration(
+                            labelText: 'Re-Enter Password',
+                            hintText: 'Re-Enter your Password',
+                            hintStyle: FlutterFlowTheme.of(context).bodyText2,
+                            enabledBorder: InputBorder.none,
+                            focusedBorder: InputBorder.none,
+                            errorBorder: InputBorder.none,
+                            focusedErrorBorder: InputBorder.none,
+                            suffixIcon: InkWell(
+                              onTap: () => setState(
+                                () => confirmPasswordFieldVisibility =
+                                    !confirmPasswordFieldVisibility,
+                              ),
+                              focusNode: FocusNode(skipTraversal: true),
+                              child: Icon(
+                                confirmPasswordFieldVisibility
+                                    ? Icons.visibility_outlined
+                                    : Icons.visibility_off_outlined,
+                                color: Color(0xFF757575),
+                                size: 22,
+                              ),
+                            ),
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).subtitle1.override(
+                                    fontFamily: 'Poppins',
+                                    lineHeight: 2,
+                                  ),
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.04, -0.03),
+                alignment: AlignmentDirectional(0, -0.03),
                 child: Container(
                   width: 346,
                   height: 60,
@@ -252,9 +304,9 @@ class _CreateanaccountWidgetState extends State<CreateanaccountWidget> {
                   child: Stack(
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(-0.79, -0.47),
+                        alignment: AlignmentDirectional(0, -0.47),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(40, 0, 20, 0),
+                          padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
                           child: Container(
                             width: MediaQuery.of(context).size.width * 0.8,
                             child: TextFormField(
@@ -300,129 +352,96 @@ class _CreateanaccountWidgetState extends State<CreateanaccountWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(-0.31, 0.33),
-                child: FFButtonWidget(
-                  onPressed: () async {
-                    if (passwordFieldController?.text !=
-                        confirmPasswordFieldController?.text) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(
-                            'Passwords don\'t match!',
+                alignment: AlignmentDirectional(0, 0.33),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                  child: FFButtonWidget(
+                    onPressed: () async {
+                      if (passwordFieldController?.text !=
+                          confirmPasswordFieldController?.text) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              'Passwords don\'t match!',
+                            ),
                           ),
+                        );
+                        return;
+                      }
+
+                      final user = await createAccountWithEmail(
+                        context,
+                        emailFieldController!.text,
+                        passwordFieldController!.text,
+                      );
+                      if (user == null) {
+                        return;
+                      }
+
+                      final usersCreateData = createUsersRecordData(
+                        phoneNumber: phoneFieldController!.text,
+                      );
+                      await UsersRecord.collection
+                          .doc(user.uid)
+                          .update(usersCreateData);
+
+                      await Navigator.push(
+                        context,
+                        PageTransition(
+                          type: PageTransitionType.fade,
+                          duration: Duration(milliseconds: 500),
+                          reverseDuration: Duration(milliseconds: 500),
+                          child: HomePageWidget(),
                         ),
                       );
-                      return;
-                    }
-
-                    final user = await createAccountWithEmail(
-                      context,
-                      emailFieldController!.text,
-                      passwordFieldController!.text,
-                    );
-                    if (user == null) {
-                      return;
-                    }
-
-                    final usersCreateData = createUsersRecordData(
-                      phoneNumber: phoneFieldController!.text,
-                    );
-                    await UsersRecord.collection
-                        .doc(user.uid)
-                        .update(usersCreateData);
-
-                    await Navigator.push(
-                      context,
-                      PageTransition(
-                        type: PageTransitionType.fade,
-                        duration: Duration(milliseconds: 500),
-                        reverseDuration: Duration(milliseconds: 500),
-                        child: HomePageWidget(),
-                      ),
-                    );
-                  },
-                  text: 'Create Account',
-                  options: FFButtonOptions(
-                    width: 300,
-                    height: 40,
-                    color: Color(0xFF5174F0),
-                    textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                          fontFamily: 'Poppins',
-                          color: Colors.white,
-                        ),
-                    borderSide: BorderSide(
-                      color: Colors.transparent,
-                      width: 1,
-                    ),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
-              ),
-              Align(
-                alignment: AlignmentDirectional(-0.42, 0.47),
-                child: FFButtonWidget(
-                  onPressed: () async {
-                    await Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => LoginWidget(),
-                      ),
-                    );
-                  },
-                  text: 'Login Instead',
-                  options: FFButtonOptions(
-                    width: 300,
-                    height: 40,
-                    color: Colors.white,
-                    textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                          fontFamily: 'Poppins',
-                          color: Color(0xFF5174F0),
-                        ),
-                    borderSide: BorderSide(
+                    },
+                    text: 'Create Account',
+                    options: FFButtonOptions(
+                      width: 300,
+                      height: 40,
                       color: Color(0xFF5174F0),
-                      width: 2,
+                      textStyle:
+                          FlutterFlowTheme.of(context).subtitle2.override(
+                                fontFamily: 'Poppins',
+                                color: Colors.white,
+                              ),
+                      borderSide: BorderSide(
+                        color: Colors.transparent,
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.circular(8),
                     ),
-                    borderRadius: BorderRadius.circular(8),
                   ),
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.45, 0.18),
+                alignment: AlignmentDirectional(0, 0.47),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(40, 0, 20, 0),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    child: TextFormField(
-                      controller: confirmPasswordFieldController,
-                      autofocus: true,
-                      obscureText: !confirmPasswordFieldVisibility,
-                      decoration: InputDecoration(
-                        labelText: 'Password',
-                        hintText: 'Enter your Password',
-                        hintStyle: FlutterFlowTheme.of(context).bodyText2,
-                        enabledBorder: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                        errorBorder: InputBorder.none,
-                        focusedErrorBorder: InputBorder.none,
-                        suffixIcon: InkWell(
-                          onTap: () => setState(
-                            () => confirmPasswordFieldVisibility =
-                                !confirmPasswordFieldVisibility,
-                          ),
-                          focusNode: FocusNode(skipTraversal: true),
-                          child: Icon(
-                            confirmPasswordFieldVisibility
-                                ? Icons.visibility_outlined
-                                : Icons.visibility_off_outlined,
-                            color: Color(0xFF757575),
-                            size: 22,
-                          ),
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                  child: FFButtonWidget(
+                    onPressed: () async {
+                      await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => LoginWidget(),
                         ),
+                      );
+                    },
+                    text: 'Login Instead',
+                    options: FFButtonOptions(
+                      width: 300,
+                      height: 40,
+                      color: Colors.white,
+                      textStyle:
+                          FlutterFlowTheme.of(context).subtitle2.override(
+                                fontFamily: 'Poppins',
+                                color: Color(0xFF5174F0),
+                              ),
+                      borderSide: BorderSide(
+                        color: Color(0xFF5174F0),
+                        width: 2,
                       ),
-                      style: FlutterFlowTheme.of(context).subtitle1.override(
-                            fontFamily: 'Poppins',
-                            lineHeight: 2,
-                          ),
+                      borderRadius: BorderRadius.circular(8),
                     ),
                   ),
                 ),

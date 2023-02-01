@@ -100,7 +100,7 @@ class _OrderHistoryWidgetState extends State<OrderHistoryWidget> {
                                 EdgeInsetsDirectional.fromSTEB(16, 0, 16, 8),
                             child: Container(
                               width: double.infinity,
-                              height: 80,
+                              height: 95,
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
@@ -132,7 +132,13 @@ class _OrderHistoryWidgetState extends State<OrderHistoryWidget> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              listViewOrdersRecord.item!,
+                                              'Order No.',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyText1,
+                                            ),
+                                            Text(
+                                              listViewIndex.toString(),
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .subtitle1,
@@ -144,19 +150,14 @@ class _OrderHistoryWidgetState extends State<OrderHistoryWidget> {
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(0, 5, 0, 0),
                                                   child: Text(
-                                                    'Order No.',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyText2,
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(0, 5, 0, 0),
-                                                  child: Text(
-                                                    valueOrDefault<String>(
-                                                      listViewIndex.toString(),
-                                                      '0',
+                                                    formatNumber(
+                                                      listViewOrdersRecord
+                                                          .price!,
+                                                      formatType:
+                                                          FormatType.custom,
+                                                      currency: 'Rs. ',
+                                                      format: '',
+                                                      locale: '',
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)

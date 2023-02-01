@@ -196,7 +196,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(-0.04, 0.66),
+                alignment: AlignmentDirectional(0, 0.66),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: Image.asset(
@@ -208,7 +208,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.75, 0.65),
+                alignment: AlignmentDirectional(0.85, 0.65),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: Image.asset(
@@ -220,23 +220,23 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(-0.74, 0.75),
+                alignment: AlignmentDirectional(0.75, 0.75),
                 child: Text(
-                  'Price item',
+                  'Samosa',
                   style: FlutterFlowTheme.of(context).bodyText1,
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(-0.03, 0.75),
+                alignment: AlignmentDirectional(-0.65, 0.75),
                 child: Text(
-                  'Price Item',
+                  'Idly',
                   style: FlutterFlowTheme.of(context).bodyText1,
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.72, 0.75),
+                alignment: AlignmentDirectional(0, 0.75),
                 child: Text(
-                  'Price Item',
+                  'Puri',
                   style: FlutterFlowTheme.of(context).bodyText1,
                 ),
               ),
@@ -286,9 +286,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.88, 1),
+                alignment: AlignmentDirectional(-0.85, 1),
                 child: Text(
-                  'Profile',
+                  'Home',
                   style: FlutterFlowTheme.of(context).bodyText2.override(
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w500,
@@ -315,6 +315,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 alignment: AlignmentDirectional(0.39, 1),
                 child: Text(
                   'Notification',
+                  style: FlutterFlowTheme.of(context).bodyText2.override(
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w500,
+                      ),
+                ),
+              ),
+              Align(
+                alignment: AlignmentDirectional(0.88, 1),
+                child: Text(
+                  'Profile',
                   style: FlutterFlowTheme.of(context).bodyText2.override(
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w500,

@@ -1,3 +1,4 @@
+import '../admin_log_in/admin_log_in_widget.dart';
 import '../createanaccount/createanaccount_widget.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
@@ -46,7 +47,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                   options: FFButtonOptions(
                     width: 330,
                     height: 50,
-                    color: Color(0xFFE31114),
+                    color: Color(0xBAFF0004),
                     textStyle: FlutterFlowTheme.of(context).subtitle2.override(
                           fontFamily: 'Poppins',
                           color: Colors.white,
@@ -60,7 +61,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.15, 0.18),
+                alignment: AlignmentDirectional(0, 0.17),
                 child: FFButtonWidget(
                   onPressed: () {
                     print('Button pressed ...');
@@ -83,7 +84,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.15, 0.35),
+                alignment: AlignmentDirectional(0, 0.33),
                 child: FFButtonWidget(
                   onPressed: () {
                     print('Button pressed ...');
@@ -106,7 +107,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(-0.01, 0.51),
+                alignment: AlignmentDirectional(0, 0.5),
                 child: FFButtonWidget(
                   onPressed: () async {
                     await Navigator.push(
@@ -137,7 +138,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.06, 0.68),
+                alignment: AlignmentDirectional(0, 0.66),
                 child: FFButtonWidget(
                   onPressed: () async {
                     await Navigator.push(
@@ -160,7 +161,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                           color: Color(0xFFBCBEC0),
                         ),
                     borderSide: BorderSide(
-                      color: Colors.transparent,
+                      color: Color(0xFF5174F0),
                       width: 1,
                     ),
                     borderRadius: BorderRadius.circular(8),
@@ -178,12 +179,22 @@ class _LoginWidgetState extends State<LoginWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(-1, -1),
-                child: Image.asset(
-                  'assets/images/Img.png',
-                  width: 390,
-                  height: 300,
-                  fit: BoxFit.cover,
+                alignment: AlignmentDirectional(0, -1.2),
+                child: InkWell(
+                  onLongPress: () async {
+                    await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AdminLogInWidget(),
+                      ),
+                    );
+                  },
+                  child: Image.asset(
+                    'assets/images/Img.png',
+                    width: MediaQuery.of(context).size.width * 1.2,
+                    height: 350,
+                    fit: BoxFit.fitHeight,
+                  ),
                 ),
               ),
             ],

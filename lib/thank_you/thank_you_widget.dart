@@ -65,7 +65,7 @@ class _ThankYouWidgetState extends State<ThankYouWidget> {
                 Align(
                   alignment: AlignmentDirectional(-0.05, -0.2),
                   child: Text(
-                    'Your order status',
+                    'Your order status will be notified soon',
                     style: FlutterFlowTheme.of(context).bodyText1,
                   ),
                 ),

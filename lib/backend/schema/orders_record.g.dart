@@ -34,18 +34,19 @@ class _$OrdersRecordSerializer implements StructuredSerializer<OrdersRecord> {
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
-    value = object.price;
-    if (value != null) {
-      result
-        ..add('Price')
-        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
-    }
     value = object.status;
     if (value != null) {
       result
         ..add('Status')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
+    }
+    value = object.price;
+    if (value != null) {
+      result
+        ..add('Price')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(double)));
     }
     value = object.ffRef;
     if (value != null) {
@@ -78,13 +79,13 @@ class _$OrdersRecordSerializer implements StructuredSerializer<OrdersRecord> {
           result.item = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
-        case 'Price':
-          result.price = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int?;
-          break;
         case 'Status':
           result.status = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
+          break;
+        case 'Price':
+          result.price = serializers.deserialize(value,
+              specifiedType: const FullType(double)) as double?;
           break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
@@ -105,16 +106,16 @@ class _$OrdersRecord extends OrdersRecord {
   @override
   final String? item;
   @override
-  final int? price;
-  @override
   final String? status;
+  @override
+  final double? price;
   @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$OrdersRecord([void Function(OrdersRecordBuilder)? updates]) =>
       (new OrdersRecordBuilder()..update(updates))._build();
 
-  _$OrdersRecord._({this.user, this.item, this.price, this.status, this.ffRef})
+  _$OrdersRecord._({this.user, this.item, this.status, this.price, this.ffRef})
       : super._();
 
   @override
@@ -130,16 +131,16 @@ class _$OrdersRecord extends OrdersRecord {
     return other is OrdersRecord &&
         user == other.user &&
         item == other.item &&
-        price == other.price &&
         status == other.status &&
+        price == other.price &&
         ffRef == other.ffRef;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc($jc(0, user.hashCode), item.hashCode), price.hashCode),
-            status.hashCode),
+        $jc($jc($jc($jc(0, user.hashCode), item.hashCode), status.hashCode),
+            price.hashCode),
         ffRef.hashCode));
   }
 
@@ -148,8 +149,8 @@ class _$OrdersRecord extends OrdersRecord {
     return (newBuiltValueToStringHelper(r'OrdersRecord')
           ..add('user', user)
           ..add('item', item)
-          ..add('price', price)
           ..add('status', status)
+          ..add('price', price)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -167,13 +168,13 @@ class OrdersRecordBuilder
   String? get item => _$this._item;
   set item(String? item) => _$this._item = item;
 
-  int? _price;
-  int? get price => _$this._price;
-  set price(int? price) => _$this._price = price;
-
   String? _status;
   String? get status => _$this._status;
   set status(String? status) => _$this._status = status;
+
+  double? _price;
+  double? get price => _$this._price;
+  set price(double? price) => _$this._price = price;
 
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
@@ -188,8 +189,8 @@ class OrdersRecordBuilder
     if ($v != null) {
       _user = $v.user;
       _item = $v.item;
-      _price = $v.price;
       _status = $v.status;
+      _price = $v.price;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -213,7 +214,7 @@ class OrdersRecordBuilder
   _$OrdersRecord _build() {
     final _$result = _$v ??
         new _$OrdersRecord._(
-            user: user, item: item, price: price, status: status, ffRef: ffRef);
+            user: user, item: item, status: status, price: price, ffRef: ffRef);
     replace(_$result);
     return _$result;
   }

@@ -4,7 +4,6 @@ import '../flutter_flow/flutter_flow_count_controller.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -56,10 +55,15 @@ class _ItemDetailWidgetState extends State<ItemDetailWidget> {
               ),
               Align(
                 alignment: AlignmentDirectional(-0.87, -0.95),
-                child: Icon(
-                  Icons.arrow_back,
-                  color: FlutterFlowTheme.of(context).primaryText,
-                  size: 24,
+                child: InkWell(
+                  onTap: () async {
+                    Navigator.pop(context);
+                  },
+                  child: Icon(
+                    Icons.arrow_back,
+                    color: FlutterFlowTheme.of(context).primaryText,
+                    size: 24,
+                  ),
                 ),
               ),
               Align(
@@ -108,9 +112,12 @@ class _ItemDetailWidgetState extends State<ItemDetailWidget> {
               ),
               Align(
                 alignment: AlignmentDirectional(-0.9, -0.37),
-                child: AutoSizeText(
-                  widget.itemRef!.description!,
-                  style: FlutterFlowTheme.of(context).bodyText1,
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(20, 0, 15, 0),
+                  child: Text(
+                    widget.itemRef!.description!,
+                    style: FlutterFlowTheme.of(context).bodyText1,
+                  ),
                 ),
               ),
               Align(
@@ -162,6 +169,9 @@ class _ItemDetailWidgetState extends State<ItemDetailWidget> {
                   onPressed: () async {
                     FFAppState().update(() {
                       FFAppState().addToCart(widget.itemRef!.reference);
+                    });
+                    FFAppState().update(() {
+                      FFAppState().Total = widget.itemRef!.price!;
                     });
                     await Navigator.push(
                       context,

@@ -83,7 +83,7 @@ class _LoginviaemailWidgetState extends State<LoginviaemailWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.12, -0.71),
+                alignment: AlignmentDirectional(0, -0.7),
                 child: Container(
                   width: 346.1,
                   height: 60,
@@ -98,10 +98,10 @@ class _LoginviaemailWidgetState extends State<LoginviaemailWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(-0.05, -0.48),
+                alignment: AlignmentDirectional(0, -0.48),
                 child: Container(
                   width: 346.1,
-                  height: 60,
+                  height: 63,
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(20),
@@ -188,7 +188,7 @@ class _LoginviaemailWidgetState extends State<LoginviaemailWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(-0.29, -0.22),
+                alignment: AlignmentDirectional(0, -0.22),
                 child: FFButtonWidget(
                   onPressed: () async {
                     final user = await signInWithEmail(
@@ -228,7 +228,7 @@ class _LoginviaemailWidgetState extends State<LoginviaemailWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(-0.21, -0.07),
+                alignment: AlignmentDirectional(0, -0.07),
                 child: FFButtonWidget(
                   onPressed: () async {
                     await Navigator.push(

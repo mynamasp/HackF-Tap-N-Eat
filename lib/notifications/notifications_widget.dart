@@ -34,23 +34,10 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
           child: Stack(
             children: [
               Align(
-                alignment: AlignmentDirectional(-0.89, -0.94),
-                child: Text(
-                  'Notifications',
-                  style: FlutterFlowTheme.of(context).title1.override(
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w800,
-                      ),
-                ),
-              ),
-              Align(
                 alignment: AlignmentDirectional(-0.52, -0.76),
                 child: Text(
                   '* Your order has been prepared',
-                  style: FlutterFlowTheme.of(context).title3.override(
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.bold,
-                      ),
+                  style: FlutterFlowTheme.of(context).subtitle1,
                 ),
               ),
               Align(
@@ -61,15 +48,12 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0, -0.6),
+                alignment: AlignmentDirectional(-0.6, -0.6),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(15, 0, 10, 0),
                   child: Text(
                     '* We have updated our Privacy Policy',
-                    style: FlutterFlowTheme.of(context).title3.override(
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.bold,
-                        ),
+                    style: FlutterFlowTheme.of(context).subtitle1,
                   ),
                 ),
               ),
@@ -81,13 +65,10 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(-0.54, -0.43),
+                alignment: AlignmentDirectional(-0.56, -0.43),
                 child: Text(
                   '* Your order has been prepared',
-                  style: FlutterFlowTheme.of(context).title3.override(
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.bold,
-                      ),
+                  style: FlutterFlowTheme.of(context).subtitle1,
                 ),
               ),
               Align(
@@ -98,13 +79,10 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(-0.78, -0.31),
+                alignment: AlignmentDirectional(-0.7, -0.31),
                 child: Text(
                   '* Welcome to FoodByte',
-                  style: FlutterFlowTheme.of(context).title3.override(
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.bold,
-                      ),
+                  style: FlutterFlowTheme.of(context).subtitle1,
                 ),
               ),
               Align(
@@ -112,6 +90,35 @@ class _NotificationsWidgetState extends State<NotificationsWidget> {
                 child: Text(
                   '3d',
                   style: FlutterFlowTheme.of(context).bodyText1,
+                ),
+              ),
+              Align(
+                alignment: AlignmentDirectional(-0.9, -0.95),
+                child: Icon(
+                  Icons.arrow_back,
+                  color: Colors.black,
+                  size: 24,
+                ),
+              ),
+              Align(
+                alignment: AlignmentDirectional(0, -0.88),
+                child: Container(
+                  width: 390,
+                  height: 10,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).lineColor,
+                  ),
+                ),
+              ),
+              Align(
+                alignment: AlignmentDirectional(-0.67, -0.95),
+                child: Text(
+                  'Notifications',
+                  style: FlutterFlowTheme.of(context).bodyText1.override(
+                        fontFamily: 'Poppins',
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                 ),
               ),
             ],
