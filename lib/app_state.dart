@@ -40,9 +40,9 @@ class FFAppState extends ChangeNotifier {
     _Cart.remove(_value);
   }
 
-  double _Total = 0.0;
-  double get Total => _Total;
-  set Total(double _value) {
+  int _Total = 0;
+  int get Total => _Total;
+  set Total(int _value) {
     _Total = _value;
   }
 }

@@ -37,15 +37,6 @@ class _LoginWidgetState extends State<LoginWidget> {
           child: Stack(
             children: [
               Align(
-                alignment: AlignmentDirectional(0, -0.99),
-                child: Image.asset(
-                  'assets/images/Img.png',
-                  width: 400,
-                  height: 300,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              Align(
                 alignment: AlignmentDirectional(0, 0),
                 child: FFButtonWidget(
                   onPressed: () {
@@ -184,6 +175,15 @@ class _LoginWidgetState extends State<LoginWidget> {
                     'By signing up, you are agreeing to our Terms & Conditions',
                     style: FlutterFlowTheme.of(context).bodyText2,
                   ),
+                ),
+              ),
+              Align(
+                alignment: AlignmentDirectional(-1, -1),
+                child: Image.asset(
+                  'assets/images/Img.png',
+                  width: 390,
+                  height: 300,
+                  fit: BoxFit.cover,
                 ),
               ),
             ],

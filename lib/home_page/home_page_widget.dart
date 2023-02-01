@@ -1,7 +1,9 @@
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../food_menu/food_menu_widget.dart';
+import '../profile/profile_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
@@ -103,42 +105,61 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   size: 24,
                 ),
               ),
-              Align(
-                alignment: AlignmentDirectional(-0.15, -0.28),
-                child: InkWell(
-                  onTap: () async {
-                    await Navigator.push(
-                      context,
-                      PageTransition(
-                        type: PageTransitionType.fade,
-                        duration: Duration(milliseconds: 500),
-                        reverseDuration: Duration(milliseconds: 500),
-                        child: FoodMenuWidget(),
+              Stack(
+                children: [
+                  Align(
+                    alignment: AlignmentDirectional(-0.15, -0.28),
+                    child: InkWell(
+                      onTap: () async {
+                        await Navigator.push(
+                          context,
+                          PageTransition(
+                            type: PageTransitionType.fade,
+                            duration: Duration(milliseconds: 500),
+                            reverseDuration: Duration(milliseconds: 500),
+                            child: FoodMenuWidget(),
+                          ),
+                        );
+                      },
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(16),
+                        child: Image.asset(
+                          'assets/images/food.jpg',
+                          width: MediaQuery.of(context).size.width * 0.87,
+                          height: MediaQuery.of(context).size.height * 0.16,
+                          fit: BoxFit.cover,
+                        ),
                       ),
-                    );
-                  },
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(16),
-                    child: Image.asset(
-                      'assets/images/food.jpg',
-                      width: MediaQuery.of(context).size.width * 0.87,
-                      height: MediaQuery.of(context).size.height * 0.16,
-                      fit: BoxFit.cover,
                     ),
                   ),
-                ),
-              ),
-              Align(
-                alignment: AlignmentDirectional(-0.79, 0.19),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(16),
-                  child: Image.asset(
-                    'assets/images/snacks.jpg',
-                    width: MediaQuery.of(context).size.width * 0.4,
-                    height: MediaQuery.of(context).size.height * 0.16,
-                    fit: BoxFit.cover,
+                  Align(
+                    alignment: AlignmentDirectional(-0.68, -0.14),
+                    child: Text(
+                      'Main Canteen',
+                      style: FlutterFlowTheme.of(context).bodyText1.override(
+                            fontFamily: 'Poppins',
+                            color: FlutterFlowTheme.of(context).platinum,
+                            fontSize: 18,
+                          ),
+                    ),
                   ),
-                ),
+                ],
+              ),
+              Stack(
+                children: [
+                  Align(
+                    alignment: AlignmentDirectional(-0.79, 0.19),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(16),
+                      child: Image.asset(
+                        'assets/images/snacks.jpg',
+                        width: MediaQuery.of(context).size.width * 0.4,
+                        height: MediaQuery.of(context).size.height * 0.16,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                ],
               ),
               Align(
                 alignment: AlignmentDirectional(0.75, 0.18),
@@ -226,7 +247,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Align(
-                      alignment: AlignmentDirectional(0, 0),
+                      alignment: AlignmentDirectional(-0.3, 0.05),
                       child: Icon(
                         Icons.search,
                         color: Colors.black,
@@ -234,37 +255,70 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       ),
                     ),
                     Align(
-                      alignment: AlignmentDirectional(0, 0),
+                      alignment: AlignmentDirectional(-0.3, 0),
                       child: Text(
                         'Explore',
-                        style: FlutterFlowTheme.of(context).bodyText1,
+                        style: FlutterFlowTheme.of(context).bodyText2.override(
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w500,
+                            ),
                       ),
                     ),
                   ],
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0, 1),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Align(
-                      alignment: AlignmentDirectional(0, 0),
-                      child: Icon(
-                        Icons.person_outline_sharp,
-                        color: Colors.black,
-                        size: 24,
+                alignment: AlignmentDirectional(0.84, 0.95),
+                child: InkWell(
+                  onTap: () async {
+                    await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ProfileWidget(),
                       ),
-                    ),
-                    Align(
-                      alignment: AlignmentDirectional(0, 0),
-                      child: Text(
-                        'Profile',
-                        style: FlutterFlowTheme.of(context).bodyText1,
+                    );
+                  },
+                  child: Icon(
+                    Icons.person_outline_sharp,
+                    color: Colors.black,
+                    size: 24,
+                  ),
+                ),
+              ),
+              Align(
+                alignment: AlignmentDirectional(0.88, 1),
+                child: Text(
+                  'Profile',
+                  style: FlutterFlowTheme.of(context).bodyText2.override(
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w500,
                       ),
-                    ),
-                  ],
+                ),
+              ),
+              Align(
+                alignment: AlignmentDirectional(-0.8, 0.96),
+                child: FaIcon(
+                  FontAwesomeIcons.home,
+                  color: Colors.black,
+                  size: 24,
+                ),
+              ),
+              Align(
+                alignment: AlignmentDirectional(0.34, 0.95),
+                child: Icon(
+                  Icons.notifications_active,
+                  color: Colors.black,
+                  size: 24,
+                ),
+              ),
+              Align(
+                alignment: AlignmentDirectional(0.39, 1),
+                child: Text(
+                  'Notification',
+                  style: FlutterFlowTheme.of(context).bodyText2.override(
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w500,
+                      ),
                 ),
               ),
             ],

@@ -163,10 +163,6 @@ class _ItemDetailWidgetState extends State<ItemDetailWidget> {
                     FFAppState().update(() {
                       FFAppState().addToCart(widget.itemRef!.reference);
                     });
-                    FFAppState().update(() {
-                      FFAppState().Total =
-                          FFAppState().Total + widget.itemRef!.price!;
-                    });
                     await Navigator.push(
                       context,
                       PageTransition(

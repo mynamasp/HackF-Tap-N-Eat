@@ -1,5 +1,6 @@
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
+import '../order_history/order_history_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -134,12 +135,23 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                         ),
                         Align(
                           alignment: AlignmentDirectional(-0.53, -0.07),
-                          child: Text(
-                            'My Orders',
-                            style: FlutterFlowTheme.of(context).title3.override(
-                                  fontFamily: 'Poppins',
-                                  fontWeight: FontWeight.bold,
+                          child: InkWell(
+                            onTap: () async {
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => OrderHistoryWidget(),
                                 ),
+                              );
+                            },
+                            child: Text(
+                              'My Orders',
+                              style:
+                                  FlutterFlowTheme.of(context).title3.override(
+                                        fontFamily: 'Poppins',
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                            ),
                           ),
                         ),
                         Align(
